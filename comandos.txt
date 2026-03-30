@@ -1,0 +1,50 @@
+  199  cd meu-projeto-ci
+  200  git init
+  201  echo "# Meu Projeto CI" > README.md
+  202  git add .
+  203  git commit -m "commit inicial"
+  204  mkdir -p .github/workflows
+  205  nano .github/workflows/01-hello-local.yml
+  206  act -l
+  207  act -W .github/workflows/01-hello-local.yml | grep "echo"
+  208  nano .github/workflows/02-pipeline-principal.yml
+  209  act -W .github/workflows/01-hello-local.yml
+  210  nano .github/workflows/02-pipeline-principal.yml
+  211  act -n
+  212  act -l
+  213  act -W .github/workflows/02-pipeline-principal.yml -P ubuntu-latest=node:slim
+  214  history 50 > comandos.txt
+  215  ls
+  216  cat comandos.txt
+  217  act -j scan-de-seguranca
+  218  history | tail -n 50 > comandos.txt
+  219  ls
+  220  comandos.txt
+  221  cat comandos.txt
+  222  history | tail -n 50 > comandos.txt
+  223  grep act comandos.txt
+  224  git add .
+  225  git commit -m "lab github actions completo"
+  226  git push
+  227  git remote add origin https://github.com/luanneoliveira-rgb/meu-projeto-ci
+  228  git branch -M main
+  229  git push -u origin main
+  230  git remote -v
+  231  mkdir meu-projeto-ci
+  232  mkdir meu-projeto-ci-gaby
+  233  cd meu-projeto-ci-gaby
+  234  git init
+  235  echo "# Meu Projeto CI" > README.md
+  236  git add .
+  237  git commit -m "commit inicial"
+  238  mkdir -p .github/workflows
+  239  sudo systemctl start docker
+  240  nano .github/workflows/01-hello-local.yml
+  241  act -l
+  242  act -W .github/workflows/01-hello-local.yml
+  243  nano .github/workflows/02-pipeline-principal.yml
+  244  act -n
+  245  act -l
+  246  act -W .github/workflows/02-pipeline-principal.yml -P ubuntu-latest=node:slim
+  247  act -j scan-de-seguranca
+  248  history | tail -n 50 > comandos.txt
